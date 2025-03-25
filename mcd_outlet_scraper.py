@@ -21,7 +21,13 @@ DB_PASSWORD = "Remember121314"
 DB_PORT = "5432"
 
 # create connection. 
-conn = psycopg2.connect(dbname=DB_HOST, user=DB_NAME, password=DB_PASSWORD, host=DB_HOST, port=DB_HOST)
+conn = psycopg2.connect(
+    dbname=DB_NAME,  # Correct: should be DB_NAME, not DB_HOST
+    user=DB_USER,    # Correct user
+    password=DB_PASSWORD,  # Correct password
+    host=DB_HOST,    # Correct host
+    port=DB_PORT     # Correct port (should be an integer or string, NOT a hostname)
+)
 
 # execute postgresql command,
 
