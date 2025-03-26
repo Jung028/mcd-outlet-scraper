@@ -2,13 +2,14 @@ import os
 import json
 import time
 import paramiko
+import pandas as pd
 from dotenv import load_dotenv
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
-
+from googlemaps import Client as GoogleMaps # Import Google Maps API client
 # Load environment variables
 load_dotenv()
 
@@ -26,9 +27,9 @@ DB_PORT = os.getenv("DB_PORT")
 
 # SQL Command to Create `outlets` Table
 SQL_SETUP = """
-CREATE TABLE IF NOT EXISTS outlets (
+CREATE TABLE outlets (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL UNIQUE,  -- Ensure name is unique
     address TEXT,
     phone VARCHAR(50),
     waze_link TEXT,
@@ -40,6 +41,10 @@ CREATE TABLE IF NOT EXISTS outlets (
 
 # PostgreSQL Command to Run on EC2
 PSQL_COMMAND = f'PGPASSWORD="{DB_PASSWORD}" psql --host={DB_HOST} --port={DB_PORT} --dbname={DB_NAME} --username={DB_USER} -c "{SQL_SETUP}"'
+
+# Load Google Maps API Key from environment variables
+GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
 
 def setup_ssh():
     """Connects to EC2 via SSH and runs PostgreSQL setup."""
@@ -98,6 +103,27 @@ def extract_outlets(html):
             continue
     return outlets
 
+def save_to_excel(outlets, filename="outlets.xlsx"):
+    """Saves outlet data to an Excel spreadsheet in the same folder."""
+    if not outlets:
+        print("❌ No outlets to save.")
+        return
+
+    data = []
+    for outlet in outlets:
+        data.append({
+            "Name": outlet.get("name", "N/A"),
+            "Address": outlet.get("address", "N/A"),
+            "Phone": outlet.get("telephone", "N/A"),
+            "Waze Link": outlet.get("url", "N/A"),
+            "Latitude": outlet.get("geo", {}).get("latitude", "N/A"),
+            "Longitude": outlet.get("geo", {}).get("longitude", "N/A"),
+        })
+
+    df = pd.DataFrame(data)
+    df.to_excel(filename, index=False)
+    print(f"✅ Data saved to {filename}")
+
 def filter_kl_outlets(outlets):
     """Filters outlets in Kuala Lumpur."""
     return [
@@ -118,8 +144,11 @@ def save_to_database(outlets):
         address = outlet.get('address', 'N/A').replace("'", "''")
         phone = outlet.get('telephone', 'N/A').replace("'", "''")
         waze_link = outlet.get('url', 'N/A').replace("'", "''")
-        latitude = outlet.get('geo', {}).get('latitude', 'NULL')
-        longitude = outlet.get('geo', {}).get('longitude', 'NULL')
+
+        coordinates = geocode_address(outlet.get('address', ''))
+        latitude = coordinates["latitude"] if coordinates["latitude"] is not None else "NULL"
+        longitude = coordinates["longitude"] if coordinates["longitude"] is not None else "NULL"
+
 
         sql_command = f"""
         INSERT INTO outlets (name, address, phone, waze_link, latitude, longitude)
@@ -158,6 +187,37 @@ def save_to_database(outlets):
             ssh.close()
             print("✅ SSH connection closed.")
 
+
+
+# Initialize Google Maps Client
+gmaps = GoogleMaps(key=GOOGLE_MAPS_API_KEY)
+
+
+def geocode_address(address):
+    """Retrieves latitude and longitude for a given address using Google Maps API."""
+    try:
+        geocode_result = gmaps.geocode(address)
+        if geocode_result:
+            location = geocode_result[0]["geometry"]["location"]
+            return {"latitude": location["lat"], "longitude": location["lng"]}
+        else:
+            print(f"❌ Geocoding failed: No results for {address}")
+            return {"latitude": None, "longitude": None}
+    except Exception as e:
+        print(f"❌ Geocoding error for {address}: {e}")
+        return {"latitude": None, "longitude": None}
+
+
+def enrich_outlets_with_coordinates(outlets):
+    """Adds latitude and longitude to outlets using Google Maps API."""
+    for outlet in outlets:
+        if "geo" not in outlet or not outlet["geo"]:
+            latitude, longitude = geocode_address(outlet.get("address", ""))
+            if latitude and longitude:
+                outlet["geo"] = {"latitude": latitude, "longitude": longitude}
+    return outlets
+
+
 def display_outlets(outlets):
     """Displays outlets in Kuala Lumpur."""
     print("\n=== McDonald's Outlets in Kuala Lumpur ===")
@@ -180,8 +240,11 @@ def main():
         html = get_page_source(url)
         outlets = extract_outlets(html)
         kl_outlets = filter_kl_outlets(outlets)
+        kl_outlets = enrich_outlets_with_coordinates(kl_outlets)  # Add coordinates using Google Maps APIz
         display_outlets(kl_outlets)
         save_to_database(kl_outlets)
+        save_to_excel(kl_outlets)  # Save data to Excel
+        print("✅ Database and Excel export completed.")
         print("✅ Database commands executed.")
         ssh.close()
         print("✅ SSH connection closed.")
