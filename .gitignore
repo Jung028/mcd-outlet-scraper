@@ -1,2 +1,15 @@
 
 .env
+# Ignore Python cache and compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore dependencies
+frontend/node_modules/
+frontend/build/
+frontend/.next/
+frontend/.cache/
+
+# Ignore environment files
+frontend/.env

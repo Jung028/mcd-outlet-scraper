@@ -1,7 +1,8 @@
+from fastapi import FastAPI
 import os
 import json
-import time
 import paramiko
+import time
 import pandas as pd
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -9,7 +10,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
-from googlemaps import Client as GoogleMaps # Import Google Maps API client
+from googlemaps import Client as GoogleMaps
+
+app = FastAPI()
+
 # Load environment variables
 load_dotenv()
 
@@ -24,6 +28,7 @@ DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_PORT = os.getenv("DB_PORT")
+REACT_APP_GOOGLE_MAPS_API_KEY = os.getenv('REACT_APP_GOOGLE_MAPS_API_KEY')
 
 # SQL Command to Create `outlets` Table
 SQL_SETUP = """
@@ -190,7 +195,7 @@ def save_to_database(outlets):
 
 
 # Initialize Google Maps Client
-gmaps = GoogleMaps(key=GOOGLE_MAPS_API_KEY)
+gmaps = GoogleMaps(key=REACT_APP_GOOGLE_MAPS_API_KEY)
 
 
 def geocode_address(address):
