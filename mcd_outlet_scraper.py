@@ -1,7 +1,8 @@
+from fastapi import FastAPI
 import os
 import json
-import time
 import paramiko
+import time
 import pandas as pd
 from dotenv import load_dotenv
 from selenium import webdriver
@@ -9,7 +10,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
-from googlemaps import Client as GoogleMaps # Import Google Maps API client
+from googlemaps import Client as GoogleMaps
+
+app = FastAPI()
+
 # Load environment variables
 load_dotenv()
 
