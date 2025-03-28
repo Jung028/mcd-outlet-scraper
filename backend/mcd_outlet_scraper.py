@@ -237,6 +237,23 @@ def display_outlets(outlets):
     else:
         print("❌ No outlets found in Kuala Lumpur.")
 
+@app.get("/")
+def home():
+    return {"message": "Welcome to the FastAPI McDonald's Outlet Scraper!"}
+
+
+@app.get("/scrape/")
+def scrape_mcdonalds():
+    """Scrapes McDonald's outlets and returns a JSON response."""
+    url = "https://www.mcdonalds.com.my/locate-us"
+    html = get_page_source(url)
+    outlets = extract_outlets(html)
+    kl_outlets = filter_kl_outlets(outlets)
+    kl_outlets = enrich_outlets_with_coordinates(kl_outlets)
+
+    return {"outlets": kl_outlets}
+
+
 def main():
     """Main function to connect, scrape, filter, display, and store outlets."""
     ssh = setup_ssh()
