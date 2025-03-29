@@ -12,7 +12,20 @@ from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 from googlemaps import Client as GoogleMaps
 
+from fastapi.middleware.cors import CORSMiddleware
+
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://192.168.0.16:3000", "http://localhost:3000"],  # Replace with ["http://192.168.0.16:3000"] in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 # Load environment variables
 load_dotenv()
@@ -47,8 +60,7 @@ CREATE TABLE outlets (
 # PostgreSQL Command to Run on EC2
 PSQL_COMMAND = f'PGPASSWORD="{DB_PASSWORD}" psql --host={DB_HOST} --port={DB_PORT} --dbname={DB_NAME} --username={DB_USER} -c "{SQL_SETUP}"'
 
-# Load Google Maps API Key from environment variables
-GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
 
 
 def setup_ssh():

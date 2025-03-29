@@ -1,12 +1,11 @@
 import React from "react";
-import MapComponent from "./MapComponent";
+import McdMap from "./McdMap";
 
 function App() {
   return (
-    <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
+    <div>
       <h1>McDonald's Outlets Map</h1>
-      <p>Displaying outlets with 5KM radius catchment areas.</p>
-      <MapComponent />
+      <McdMap />
     </div>
   );
 }
