@@ -53,6 +53,7 @@ CREATE TABLE outlets (
     waze_link TEXT,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    services TEXT,  -- Added services column
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """
@@ -69,6 +70,7 @@ def setup_ssh():
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
         ssh.connect(SSH_HOST, username=SSH_USER, key_filename=SSH_KEY_PATH)
+
         print("✅ Connected to EC2 via SSH.")
 
         # Execute PostgreSQL setup via SSH
@@ -106,9 +108,11 @@ def get_page_source(url):
     return page_source
 
 def extract_outlets(html):
-    """Extracts outlet details from JSON-LD <script> tags."""
+    """Extracts outlet details and assigns the correct services to each location."""
     soup = BeautifulSoup(html, "html.parser")
     outlets = []
+
+    # Extract each outlet's data from JSON-LD scripts
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(script.string)
@@ -118,7 +122,21 @@ def extract_outlets(html):
                 outlets.append(data)
         except json.JSONDecodeError:
             continue
+
+    # Find all outlets' containers
+    outlet_divs = soup.find_all("div", class_="addressBox")  # Adjusted to match the outlet block
+
+    for i, outlet_div in enumerate(outlet_divs):
+        # Find all service tooltips within this specific outlet
+        service_icons = outlet_div.find_all("span", class_="ed-tooltiptext")
+        services = [service.text.strip() for service in service_icons]
+
+        # Assign the extracted services **only to the matching outlet**
+        if i < len(outlets):
+            outlets[i]["services"] = services
+
     return outlets
+
 
 def save_to_excel(outlets, filename="outlets.xlsx"):
     """Saves outlet data to an Excel spreadsheet in the same folder."""
@@ -135,6 +153,8 @@ def save_to_excel(outlets, filename="outlets.xlsx"):
             "Waze Link": outlet.get("url", "N/A"),
             "Latitude": outlet.get("geo", {}).get("latitude", "N/A"),
             "Longitude": outlet.get("geo", {}).get("longitude", "N/A"),
+            "Services": ", ".join(outlet.get("services", []))  # Convert list to comma-separated string
+
         })
 
     df = pd.DataFrame(data)
@@ -148,12 +168,11 @@ def filter_kl_outlets(outlets):
         if "address" in outlet and "Kuala Lumpur" in outlet["address"]
     ]
 def save_to_database(outlets):
-    """Saves outlet data to the PostgreSQL database via SSH."""
+    """Saves outlet data and services to the PostgreSQL database via SSH."""
     if not outlets:
         print("❌ No outlets to save.")
         return
 
-    # Start SQL transaction
     sql_commands = ["BEGIN;"]
 
     for outlet in outlets:
@@ -166,25 +185,25 @@ def save_to_database(outlets):
         latitude = coordinates["latitude"] if coordinates["latitude"] is not None else "NULL"
         longitude = coordinates["longitude"] if coordinates["longitude"] is not None else "NULL"
 
+        # Convert list of services to a string
+        services = ", ".join(outlet.get("services", [])).replace("'", "''")
 
         sql_command = f"""
-        INSERT INTO outlets (name, address, phone, waze_link, latitude, longitude)
-        VALUES ('{name}', '{address}', '{phone}', '{waze_link}', {latitude}, {longitude})
+        INSERT INTO outlets (name, address, phone, waze_link, latitude, longitude, services)
+        VALUES ('{name}', '{address}', '{phone}', '{waze_link}', {latitude}, {longitude}, '{services}')
         ON CONFLICT (name) DO UPDATE 
         SET address = EXCLUDED.address,
             phone = EXCLUDED.phone,
             waze_link = EXCLUDED.waze_link,
             latitude = EXCLUDED.latitude,
-            longitude = EXCLUDED.longitude;
+            longitude = EXCLUDED.longitude,
+            services = EXCLUDED.services;
         """
         sql_commands.append(sql_command)
 
-    # Commit transaction
     sql_commands.append("COMMIT;")
-
     full_sql_command = " ".join(sql_commands)
 
-    # Execute the SQL command over SSH
     ssh = setup_ssh()
     if ssh:
         try:
@@ -236,7 +255,7 @@ def enrich_outlets_with_coordinates(outlets):
 
 
 def display_outlets(outlets):
-    """Displays outlets in Kuala Lumpur."""
+    """Displays outlets in Kuala Lumpur along with services."""
     print("\n=== McDonald's Outlets in Kuala Lumpur ===")
     if outlets:
         for outlet in outlets:
@@ -245,9 +264,11 @@ def display_outlets(outlets):
             print(f"📞 Phone: {outlet.get('telephone', 'N/A')}")
             print(f"🌍 Waze Link: {outlet.get('url', 'N/A')}")
             print(f"📌 Coordinates: {outlet.get('geo', {}).get('latitude', 'N/A')}, {outlet.get('geo', {}).get('longitude', 'N/A')}")
+            print(f"🎉 Services: {', '.join(outlet.get('services', []))}")
             print("-" * 50)
     else:
         print("❌ No outlets found in Kuala Lumpur.")
+
 
 @app.get("/")
 def home():
