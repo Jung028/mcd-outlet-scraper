@@ -1,12 +1,20 @@
 import React from "react";
-import MapComponent from "./MapComponent";
+import McdMap from "./McdMap";
+import Chatbot from "./Chatbot";
 
 function App() {
   return (
-    <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
-      <h1>McDonald's Outlets Map</h1>
-      <p>Displaying outlets with 5KM radius catchment areas.</p>
-      <MapComponent />
+    <div className="relative h-screen w-screen flex flex-col bg-gray-100">
+      {/* Chatbot at the top with a sticky header */}
+      <div className="fixed top-0 w-full z-10 bg-white shadow-md p-4">
+        <h1 className="text-xl font-bold text-center">McDonald's Outlets Map</h1>
+        <McdMap />
+      </div>
+
+      {/* Map takes full space below the chatbot */}
+      <div className="flex-grow mt-24">
+        <Chatbot />
+      </div>
     </div>
   );
 }

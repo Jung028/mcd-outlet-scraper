@@ -1,0 +1,922 @@
+{
+  "outlets": [
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Bukit Bintang",
+      "address": "120-120A Jalan Bukit Bintang, 55100, Kuala Lumpur, Malaysia",
+      "telephone": "03-21427843",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.146847,
+        "longitude": 101.710931
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Bangsar",
+      "address": "48, Jalan Telawi Lima, 59100, Bangsar Baru, Bangsar, Kuala Lumpur, Malaysia",
+      "telephone": "03-22012551",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.13295,
+        "longitude": 101.672297
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Alpha Angle ",
+      "address": "Lot G-13, Ground Floor, Alpha Angle Complex, Jalan R1, Wangsa Maju, 53000, Setapak, Kuala Lumpur, Malaysia",
+      "telephone": "03-41314015",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.202098,
+        "longitude": 101.734244
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Leisure Mall Cheras",
+      "address": "LG 16, Lower Ground Floor, Leisure Mall, Taman Segar, No. 6, Jalan Cheras, 56100, Cheras, Kuala Lumpur, Malaysia",
+      "telephone": "03-91345785",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.090122,
+        "longitude": 101.74152
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Desa Pandan",
+      "address": "Lot 2 & 2-1, Jalan 1/76D, Desa Pandan, 55100, Kuala Lumpur, Malaysia",
+      "telephone": "03-92028218",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.14709,
+        "longitude": 101.736853
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Jalan Tun Perak ",
+      "address": "38, Jalan Tun Perak, Ground & Mezzanine Floor, Wisma Teck Lee, 50050, Kuala Lumpur, Malaysia",
+      "telephone": "03-20266899 ",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.149178,
+        "longitude": 101.696865
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Gombak ",
+      "address": "M01 & M02, Kompleks Idaman, No. 40 - 50, Jalan 2/21D, Medan Idaman, Batu 5 1/4, Jalan Gombak, 53000, Kuala Lumpur, Malaysia",
+      "telephone": "03-40319751",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.212711,
+        "longitude": 101.711531
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Mont Kiara ",
+      "address": "No. 1, Block D, Plaza Mont Kiara, Jalan Bukit Kiara, 50480, Bukit Kiara, Kuala Lumpur, Malaysia",
+      "telephone": "03-62063255",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.165745,
+        "longitude": 101.652203
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Petron Seremban-KL Highway DT",
+      "address": "8KM, KL-Seremban Highway, 57000, Seri Kembangan, Kuala Lumpur, Malaysia",
+      "telephone": "03-89423932",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.047047,
+        "longitude": 101.705739
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Bandar Sri Damansara DT",
+      "address": "Lot PT21552 & PT21553, Mukim Sungai Buloh, Persiaran Perdana, 52200, Bandar Sri Damansara, Kuala Lumpur, Malaysia",
+      "telephone": "03-62617064",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.195093,
+        "longitude": 101.607767
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Pandan Mewah DT",
+      "address": "Bangunan Restoran McDonald's, Jalan Mewah Utara, 68000, Ampang, Kuala Lumpur, Malaysia",
+      "telephone": "012-6214202",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.128108,
+        "longitude": 101.762843
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Setiawangsa DT",
+      "address": "Lot 16794 & 16795, Jalan 37/56, Taman Setiawangsa, 54200, Kuala Lumpur, Malaysia",
+      "telephone": "03-42567660",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.178129,
+        "longitude": 101.743585
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Berjaya Times Square",
+      "address": "Lot 05-93, 93A, No. 1, Jalan Imbi, 55100, Kuala Lumpur, Malaysia",
+      "telephone": "03-21100154",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.142065,
+        "longitude": 101.710819
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Kuchai Lama DT",
+      "address": "1/116B, Off Jalan Kuchai Lama, Kuchai Entrepreneurs Park, 58200, Kuala Lumpur, Malaysia",
+      "telephone": "03-79822180",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.087352,
+        "longitude": 101.690106
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Taman Connaught DT",
+      "address": "Lot 18113, Jalan Cendikiawan, 55100, Mukim Petaling, Kuala Lumpur, Malaysia",
+      "telephone": "03-91016190",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.081484,
+        "longitude": 101.731946
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Petronas TPM DT",
+      "address": "Petronas Petrol Station, Technology Park Malaysia, Seremban KL-Highway, 50700, Kuala Lumpur, Malaysia",
+      "telephone": "03-90541502",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.056652,
+        "longitude": 101.704186
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Petronas Melati DT",
+      "address": "Lot 3644 HS (D) 70344 &, Lot PT 8081 HS (D) 107241, Taman Melati, Mukim Setapak, 53100, Kuala Lumpur, Malaysia",
+      "telephone": "03-41613791",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.225019,
+        "longitude": 101.728649
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Jalan Cheras DT",
+      "address": "Lot PT 7430, HSD 111856, KM5.5, Jalan Cheras, 56000, Cheras, Kuala Lumpur, Malaysia",
+      "telephone": "03-91342127",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.104739,
+        "longitude": 101.732853
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Petronas MRR2 Kepong DT",
+      "address": "Lot 25747, Lebuh Raya Selayang, Kepong Lebuh Raya, Lingkaran Tengah 2 (MRR 2), 52100, Kepong, Kuala Lumpur, Malaysia",
+      "telephone": "03-62596498",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.229265,
+        "longitude": 101.65503
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's M2 Mall",
+      "address": "Lot 1, Level1, BUSANA, Menara MARA, No. 232, Jalan Tuanku Abdul Rahman, 50100, Kuala Lumpur , Malaysia",
+      "telephone": "03-22028034",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.157924,
+        "longitude": 101.695732
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's TTDI (Taman Tun Dr Ismail)",
+      "address": "No. 2, 2A & B, Jalan Tun Mohd Fuad 2, Taman Tun Dr Ismail, 60000, Kuala Lumpur, Malaysia",
+      "telephone": "03-77310984",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.140522,
+        "longitude": 101.629209
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's BHP Taman Melawati DT",
+      "address": "Lot PT 8669, Jalan Lingkaran Tengah II, 53100, Kuala Lumpur, Malaysia",
+      "telephone": "03-41621453",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.220217,
+        "longitude": 101.735889
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's NU Sentral",
+      "address": "Unit No. L4. 02 & 03, Level 4, 1 Sentral, Jalan Travers, 50470, Kuala Lumpur, Malaysia",
+      "telephone": "03-22760042",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.133295,
+        "longitude": 101.687277
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Sri Petaling",
+      "address": "No 63 & 63-1, Jalan Radin Tengah, Bandar Baru Sri Petaling, 57000, Kuala Lumpur, Malaysia",
+      "telephone": "03-90540493",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.068888,
+        "longitude": 101.6918
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Mid Valley 3",
+      "address": "Tingkat 3, Mid Valley Megamall, Lingkaran Syed Putra, 59200, Kuala Lumpur, Malaysia",
+      "telephone": "03-22010506",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.117399,
+        "longitude": 101.677572
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's KL Sentral",
+      "address": "Lot 14, 15, & 16, First Floor, Kuala Lumpur Sentral Station, 50470, Kuala Lumpur, Malaysia",
+      "telephone": "03-22722431",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.134615,
+        "longitude": 101.686593
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Suria KLCC",
+      "address": "Lot C35 - 38, Concourse Floor, Suria KLCC Shopping Centre, Jalan Ampang, 50088, Kuala Lumpur, Malaysia",
+      "telephone": "03-27151512",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.157474,
+        "longitude": 101.712164
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's MyTown Mall",
+      "address": "Lot No. B1-03 & B1-E-03, MyTown Shopping Centre, No. 6, Jalan Cohcrane, Section 90, 55100, Kuala Lumpur, Malaysia",
+      "telephone": "03-27322567",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.134208,
+        "longitude": 101.723645
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Sunway Velocity Mall",
+      "address": "LG, Sunway Velocity Mall, Jalan Peel, 55100, Kuala Lumpur, Malaysia",
+      "telephone": "03-27320717",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.127299,
+        "longitude": 101.724463
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Intermark Mall",
+      "address": "Lot No. G17, G17A & G17B, Ground Floor, Intermark Mall, 348, Jalan Tun Razak, 50400, Kuala Lumpur, Malaysia",
+      "telephone": "03-27155667",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.161279,
+        "longitude": 101.720181
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Danau Kota DT",
+      "address": "Part of Lot 201138, Jalan Langkawi, Mukim Setapak, Taman Danau Kota, 53300 Kuala Lumpur.",
+      "telephone": "03-41310897",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.2066149,
+        "longitude": 101.71755680000001
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Desa Park City DT",
+      "address": "Lot GF32 & FF31, Waterfront Parkcity, Persiaran Residen, Desapark City, 52200 Kuala Lumpur. ",
+      "telephone": "03-62611632",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.1877337,
+        "longitude": 101.62778
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Pearl Point DT",
+      "address": "Lot No G-08, Ground Floor, Pearl Point Shopping Complex, 5th Mile, Old Klang Road, 58000 Kuala Lumpur                                                                 ",
+      "telephone": "03-79712465",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.084915,
+        "longitude": 101.673568
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Jalan P. Ramlee",
+      "address": "Lot G-W-1, Ground Floor, West Wing, Rohas Pure Circle, No 9, Jalan P Ramlee, 50450 Kuala Lumpur",
+      "telephone": "03-21815851",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.154587,
+        "longitude": 101.708461
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's BHP Jalan Kepong",
+      "address": "Lot PT 1, Batu 6 1/2, Jalan Kepong, 52000 Kuala Lumpur",
+      "telephone": "03-62500090",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.208163,
+        "longitude": 101.653579
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Jalan Sentul DT",
+      "address": "PT 8938, Jalan Sentul/Batu Caves, Mukim Setapak, Sentul, 51100 Kuala Lumpur",
+      "telephone": "016-2127692",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.12223,
+        "longitude": 101.41208
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Wisma Lim Foo Yong ",
+      "address": "Wisma Lim Foo Yong, Lot No. 62, Seksyen 57, Jalan Raja Chulan, 50250 Kuala Lumpur. ",
+      "telephone": "03-21102479",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.09032,
+        "longitude": 101.42334
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Sentul UOA DT",
+      "address": "LOT PT 10098, Jalan Sentul Pasar, Mukim Setapak Dalam, Bandaraya Kuala Lumpur 51000 Kuala Lumpur ",
+      "telephone": "03-27029214",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.202057,
+        "longitude": 101.689976
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Tasik Ampang DT",
+      "address": "Lot PT 2536, Lebuh Raya Lingkaran Tengah 2, Mukim Ampang, 55000 Kuala Lumpur",
+      "telephone": "03-92013561",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.151919749,
+        "longitude": 101.745321
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Bukit Bintang DT",
+      "address": "225, Bukit Bintang St, Imbi, 55100 Kuala Lumpur, Federal Territory Of Kuala Lumpur",
+      "telephone": "03-21101876",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.14752,
+        "longitude": 101.7178428
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Jalan Kuching DT",
+      "address": "Lot 58043, Jalan Kuching, Mukim Batu 68100, Wlayah Persekutuan Kuala Lumpur",
+      "telephone": "",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.223098,
+        "longitude": 101.6721257
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Wangsa Maju DT",
+      "address": "Lot 28332, Jalan 8/27A, Pusat Bandar Wangsa Maju, 53300 Kuala Lumpur",
+      "telephone": "03-41315949",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.19744,
+        "longitude": 101.744674130684
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Jalan Tun Razak DT",
+      "address": "No 9, Jalan Fletcher, 50400 Kuala Lumpur",
+      "telephone": "03-26022147",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.1721,
+        "longitude": 101.7086
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Petron North Kiara DT",
+      "address": "452, Jalan Segambut, Kampung Segambut Tengah, 1200 Kuala Lumpur",
+      "telephone": "03-62423593",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.18298,
+        "longitude": 101.65492
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Pantai Sentral Park DT",
+      "address": "No. 2, Jalan Pantai Sentral 1, Pantai Sentral, 59200, Wilayah Persekutuan Kuala Lumpur.",
+      "telephone": "03-22411097",
+      "info": "Surau Available",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.101972,
+        "longitude": 101.666333
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's BHP Genting Klang DT",
+      "address": "5241 & 5242, 295, Jalan Genting Kelang, Perusahaan PKNS, 53200 Kuala Lumpur.",
+      "telephone": "",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.196826,
+        "longitude": 101.7137842
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Giant Ulu Kelang",
+      "address": "SG03 & SG04, Giant Ulu Kelang, Lot 13793 & 13796 Jalan Changkat Permata, 53300 Kuala Lumpur.",
+      "telephone": "03-41085134",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.207414,
+        "longitude": 101.7515586
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Titiwangsa DT",
+      "address": "Lot 8, Section 85, Jalan Pahang, 53000, Setapak, Kuala Lumpur, Malaysia.",
+      "telephone": "03-40311346",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.179551,
+        "longitude": 101.700383
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's KLIA Anjung",
+      "address": "VD-5-L01, Viewing Gallery, Level 5, Main Terminal Building, Kuala Lumpur International Airport, 64000 Selangor",
+      "telephone": "",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 2.73464,
+        "longitude": 101.70641
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Shell Taman Desa DT",
+      "address": "1 Jln 3/109E, Desa Business Park, Taman Desa, 58100 Kuala Lumpur",
+      "telephone": "03-79720127",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.10078877793453,
+        "longitude": 101.686130313856
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    },
+    {
+      "@context": "http://schema.org/",
+      "@type": "Restaurant",
+      "name": "McDonald's Desa Petaling SF",
+      "address": "1-3, Pusat Perdagangan Salak II, Jalan 2/125, Taman Desa Petaling, 57100 Kuala Lumpur",
+      "telephone": "",
+      "info": "",
+      "image": [
+        "https://www.mcdonalds.com.my/images/sharer/logo-social.png"
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 3.0845,
+        "longitude": 101.700753
+      },
+      "menu": "https://www.mcdonalds.com.my/menu",
+      "url": "https://www.mcdonalds.com.my/locate-us"
+    }
+  ]
+}

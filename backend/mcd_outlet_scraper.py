@@ -1,4 +1,3 @@
-from fastapi import FastAPI
 import os
 import json
 import paramiko
@@ -11,8 +10,23 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 from googlemaps import Client as GoogleMaps
+from fastapi import FastAPI, HTTPException
+import requests
+from fastapi.middleware.cors import CORSMiddleware
+import google.generativeai as genai
+
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://192.168.0.16:3000", "http://localhost:3000"],  # Replace with ["http://192.168.0.16:3000"] in production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 
 # Load environment variables
 load_dotenv()
@@ -40,6 +54,7 @@ CREATE TABLE outlets (
     waze_link TEXT,
     latitude DOUBLE PRECISION,
     longitude DOUBLE PRECISION,
+    services TEXT,  -- Added services column
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 """
@@ -47,8 +62,7 @@ CREATE TABLE outlets (
 # PostgreSQL Command to Run on EC2
 PSQL_COMMAND = f'PGPASSWORD="{DB_PASSWORD}" psql --host={DB_HOST} --port={DB_PORT} --dbname={DB_NAME} --username={DB_USER} -c "{SQL_SETUP}"'
 
-# Load Google Maps API Key from environment variables
-GOOGLE_MAPS_API_KEY = os.getenv("GOOGLE_MAPS_API_KEY")
+
 
 
 def setup_ssh():
@@ -57,6 +71,7 @@ def setup_ssh():
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     try:
         ssh.connect(SSH_HOST, username=SSH_USER, key_filename=SSH_KEY_PATH)
+
         print("✅ Connected to EC2 via SSH.")
 
         # Execute PostgreSQL setup via SSH
@@ -94,9 +109,11 @@ def get_page_source(url):
     return page_source
 
 def extract_outlets(html):
-    """Extracts outlet details from JSON-LD <script> tags."""
+    """Extracts outlet details and assigns the correct services to each location."""
     soup = BeautifulSoup(html, "html.parser")
     outlets = []
+
+    # Extract each outlet's data from JSON-LD scripts
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(script.string)
@@ -106,7 +123,21 @@ def extract_outlets(html):
                 outlets.append(data)
         except json.JSONDecodeError:
             continue
+
+    # Find all outlets' containers
+    outlet_divs = soup.find_all("div", class_="addressBox")  # Adjusted to match the outlet block
+
+    for i, outlet_div in enumerate(outlet_divs):
+        # Find all service tooltips within this specific outlet
+        service_icons = outlet_div.find_all("span", class_="ed-tooltiptext")
+        services = [service.text.strip() for service in service_icons]
+
+        # Assign the extracted services **only to the matching outlet**
+        if i < len(outlets):
+            outlets[i]["services"] = services
+
     return outlets
+
 
 def save_to_excel(outlets, filename="outlets.xlsx"):
     """Saves outlet data to an Excel spreadsheet in the same folder."""
@@ -123,6 +154,8 @@ def save_to_excel(outlets, filename="outlets.xlsx"):
             "Waze Link": outlet.get("url", "N/A"),
             "Latitude": outlet.get("geo", {}).get("latitude", "N/A"),
             "Longitude": outlet.get("geo", {}).get("longitude", "N/A"),
+            "Services": ", ".join(outlet.get("services", []))  # Convert list to comma-separated string
+
         })
 
     df = pd.DataFrame(data)
@@ -136,12 +169,11 @@ def filter_kl_outlets(outlets):
         if "address" in outlet and "Kuala Lumpur" in outlet["address"]
     ]
 def save_to_database(outlets):
-    """Saves outlet data to the PostgreSQL database via SSH."""
+    """Saves outlet data and services to the PostgreSQL database via SSH."""
     if not outlets:
         print("❌ No outlets to save.")
         return
 
-    # Start SQL transaction
     sql_commands = ["BEGIN;"]
 
     for outlet in outlets:
@@ -154,25 +186,25 @@ def save_to_database(outlets):
         latitude = coordinates["latitude"] if coordinates["latitude"] is not None else "NULL"
         longitude = coordinates["longitude"] if coordinates["longitude"] is not None else "NULL"
 
+        # Convert list of services to a string
+        services = ", ".join(outlet.get("services", [])).replace("'", "''")
 
         sql_command = f"""
-        INSERT INTO outlets (name, address, phone, waze_link, latitude, longitude)
-        VALUES ('{name}', '{address}', '{phone}', '{waze_link}', {latitude}, {longitude})
+        INSERT INTO outlets (name, address, phone, waze_link, latitude, longitude, services)
+        VALUES ('{name}', '{address}', '{phone}', '{waze_link}', {latitude}, {longitude}, '{services}')
         ON CONFLICT (name) DO UPDATE 
         SET address = EXCLUDED.address,
             phone = EXCLUDED.phone,
             waze_link = EXCLUDED.waze_link,
             latitude = EXCLUDED.latitude,
-            longitude = EXCLUDED.longitude;
+            longitude = EXCLUDED.longitude,
+            services = EXCLUDED.services;
         """
         sql_commands.append(sql_command)
 
-    # Commit transaction
     sql_commands.append("COMMIT;")
-
     full_sql_command = " ".join(sql_commands)
 
-    # Execute the SQL command over SSH
     ssh = setup_ssh()
     if ssh:
         try:
@@ -224,7 +256,7 @@ def enrich_outlets_with_coordinates(outlets):
 
 
 def display_outlets(outlets):
-    """Displays outlets in Kuala Lumpur."""
+    """Displays outlets in Kuala Lumpur along with services."""
     print("\n=== McDonald's Outlets in Kuala Lumpur ===")
     if outlets:
         for outlet in outlets:
@@ -233,9 +265,56 @@ def display_outlets(outlets):
             print(f"📞 Phone: {outlet.get('telephone', 'N/A')}")
             print(f"🌍 Waze Link: {outlet.get('url', 'N/A')}")
             print(f"📌 Coordinates: {outlet.get('geo', {}).get('latitude', 'N/A')}, {outlet.get('geo', {}).get('longitude', 'N/A')}")
+            print(f"🎉 Services: {', '.join(outlet.get('services', []))}")
             print("-" * 50)
     else:
         print("❌ No outlets found in Kuala Lumpur.")
+
+
+@app.get("/")
+def home():
+    return {"message": "Welcome to the FastAPI McDonald's Outlet Scraper!"}
+
+
+@app.get("/scrape/")
+def scrape_mcdonalds():
+    """Scrapes McDonald's outlets and returns a JSON response."""
+    url = "https://www.mcdonalds.com.my/locate-us"
+    html = get_page_source(url)
+    outlets = extract_outlets(html)
+    kl_outlets = filter_kl_outlets(outlets)
+    kl_outlets = enrich_outlets_with_coordinates(kl_outlets)
+
+    return {"outlets": kl_outlets}
+
+
+
+
+# Set up Gemini API Key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
+# Initialize the Gemini model
+model = genai.GenerativeModel("gemini-1.5-flash-latest")
+# Load CSV data into a Pandas DataFrame
+csv_file = "chat-data-outlets.csv"
+df = pd.read_csv(csv_file, delimiter=",", quotechar='"', on_bad_lines="skip")
+
+@app.get("/chat/{query}")
+async def chat(query: str):
+    """Answer user's query based on the outlets.csv file using Gemini API."""
+    try:
+        # Convert DataFrame to a structured text format for querying
+        outlet_data = df.to_dict(orient="records")
+        context = "Here is a list of McDonald's outlets with their details: " + str(outlet_data)
+
+        # Generate a response from Gemini
+        response = model.generate_content(f"{context}\n\nUser query: {query}")
+        
+        # Return the generated response
+        return {"answer": response.text}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 def main():
     """Main function to connect, scrape, filter, display, and store outlets."""
