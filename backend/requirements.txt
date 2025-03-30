@@ -1,0 +1,11 @@
+fastapi
+paramiko
+dotenv
+selenium
+beautifulsoup4
+webdriver-manager
+googlemaps
+pandas
+requests
+google-generativeai
+uvicorn
