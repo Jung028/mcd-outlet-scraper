@@ -80,6 +80,7 @@ const McdMap = () => {
             const { latitude, longitude } = outlet.geo;
             const isIntersecting = intersectingOutlets.has(outlet.name);
             const markerIcon = isIntersecting ?  normalIcon : intersectIcon;
+            const servicesList = outlet.services ? outlet.services.join(", ") : "N/A";
 
             const popupContent = `
                 <div style="text-align:center;">
@@ -88,10 +89,12 @@ const McdMap = () => {
                     <b>Address:</b> ${outlet.address}<br/>
                     <b>Phone:</b> ${outlet.telephone}<br/>
                     <b>Info:</b> ${outlet.info || "N/A"}<br/>
+                    <b>Services:</b> ${servicesList}<br/>
                     <b>Menu:</b> <a href="${outlet.menu}" target="_blank">View Menu</a><br/>
                     <b>More Info:</b> <a href="${outlet.url}" target="_blank">Visit Site</a>
                 </div>
             `;
+
 
             L.marker([latitude, longitude], { icon: markerIcon })
                 .addTo(map)

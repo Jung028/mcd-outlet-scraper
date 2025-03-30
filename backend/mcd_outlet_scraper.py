@@ -1,4 +1,3 @@
-from fastapi import FastAPI
 import os
 import json
 import paramiko
@@ -11,8 +10,10 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 from googlemaps import Client as GoogleMaps
-
+from fastapi import FastAPI, HTTPException
+import requests
 from fastapi.middleware.cors import CORSMiddleware
+import google.generativeai as genai
 
 
 app = FastAPI()
@@ -286,6 +287,34 @@ def scrape_mcdonalds():
 
     return {"outlets": kl_outlets}
 
+
+
+
+# Set up Gemini API Key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=GEMINI_API_KEY)
+# Initialize the Gemini model
+model = genai.GenerativeModel("gemini-1.5-flash-latest")
+# Load CSV data into a Pandas DataFrame
+csv_file = "chat-data-outlets.csv"
+df = pd.read_csv(csv_file, delimiter=",", quotechar='"', on_bad_lines="skip")
+
+@app.get("/chat/{query}")
+async def chat(query: str):
+    """Answer user's query based on the outlets.csv file using Gemini API."""
+    try:
+        # Convert DataFrame to a structured text format for querying
+        outlet_data = df.to_dict(orient="records")
+        context = "Here is a list of McDonald's outlets with their details: " + str(outlet_data)
+
+        # Generate a response from Gemini
+        response = model.generate_content(f"{context}\n\nUser query: {query}")
+        
+        # Return the generated response
+        return {"answer": response.text}
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
 
 def main():
     """Main function to connect, scrape, filter, display, and store outlets."""

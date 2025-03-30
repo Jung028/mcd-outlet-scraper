@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@google/generative-ai": "^0.24.0",
     "@react-google-maps/api": "^2.20.6",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -10,6 +11,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@turf/turf": "^7.2.0",
     "axios": "^1.8.4",
+    "deep-chat": "^2.1.1",
+    "deep-chat-react": "^2.1.1",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
     "react": "^19.0.0",
