@@ -63,6 +63,8 @@ CREATE TABLE outlets (
 PSQL_COMMAND = f'PGPASSWORD="{DB_PASSWORD}" psql --host={DB_HOST} --port={DB_PORT} --dbname={DB_NAME} --username={DB_USER} -c "{SQL_SETUP}"'
 
 
+# Initialize Google Maps Client
+gmaps = GoogleMaps(key=REACT_APP_GOOGLE_MAPS_API_KEY)
 
 
 def setup_ssh():
@@ -226,8 +228,6 @@ def save_to_database(outlets):
 
 
 
-# Initialize Google Maps Client
-gmaps = GoogleMaps(key=REACT_APP_GOOGLE_MAPS_API_KEY)
 
 
 def geocode_address(address):
