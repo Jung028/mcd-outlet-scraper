@@ -20,7 +20,7 @@ const Chatbot = () => {
     if (!query) return;
 
     try {
-      const res = await fetch(`http://localhost:10000/chat/${encodeURIComponent(query)}`);
+      const res = await fetch(`http://localhost:3000/chat/${encodeURIComponent(query)}`);
       const data = await res.json();
       setResponse([...response, { query, answer: formatResponse(data.answer) }]);
       setQuery("");

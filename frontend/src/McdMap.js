@@ -21,7 +21,7 @@ const McdMap = () => {
     const mapRef = useRef(null); // Store the map instance
 
     useEffect(() => {
-        fetch("https://mindhive-assessment.onrender.com/")
+        fetch("http://localhost:3000/scrape")
             .then((response) => response.json())
             .then((data) => {
                 setOutlets(data.outlets);
