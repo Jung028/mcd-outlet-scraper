@@ -1,3 +1,4 @@
+import logging
 import os
 import json
 import paramiko
@@ -20,7 +21,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://192.168.0.16:3000", "http://localhost:3000"],  # Replace with ["http://192.168.0.16:3000"] in production
+    allow_origins=["http://192.168.0.13:3000", "http://localhost:3000", "https://mindhive-assessment.onrender.com", "https://mindhive-assessment-2.onrender.com", ],  # Replace with ["http://192.168.0.16:3000"] in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -278,14 +279,19 @@ def home():
 
 @app.get("/scrape/")
 def scrape_mcdonalds():
-    """Scrapes McDonald's outlets and returns a JSON response."""
-    url = "https://www.mcdonalds.com.my/locate-us"
-    html = get_page_source(url)
-    outlets = extract_outlets(html)
-    kl_outlets = filter_kl_outlets(outlets)
-    kl_outlets = enrich_outlets_with_coordinates(kl_outlets)
+    try :
+        """Scrapes McDonald's outlets and returns a JSON response."""
+        url = "https://www.mcdonalds.com.my/locate-us"
+        html = get_page_source(url)
+        outlets = extract_outlets(html)
+        kl_outlets = filter_kl_outlets(outlets)
+        kl_outlets = enrich_outlets_with_coordinates(kl_outlets)
 
-    return {"outlets": kl_outlets}
+        return {"outlets": kl_outlets}
+    except Exception as e:
+        logging.error(f"Error in /scrape endpoint: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
+    
 
 
 
