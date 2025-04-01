@@ -24,7 +24,7 @@ const McdMap = () => {
         fetch("https://mindhive-assessment.onrender.com/scrape")
             .then((response) => response.json())
             .then((data) => {
-                if (data) {  // ✅ Ensure data is defined before using it
+                if (data && Array.isArray(data.outlets)) {  // ✅ Ensure it's an array before using .length
                     setOutlets(data.outlets);
                     findIntersections(data.outlets);
                 } else {
