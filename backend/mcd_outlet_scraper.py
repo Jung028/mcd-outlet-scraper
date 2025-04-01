@@ -28,7 +28,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+options = webdriver.ChromeOptions()
+options.binary_location = "/usr/bin/google-chrome"  # Set correct Chrome path
 
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # Load environment variables
 load_dotenv()
