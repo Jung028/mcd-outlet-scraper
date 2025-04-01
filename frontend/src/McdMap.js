@@ -22,6 +22,7 @@ const McdMap = () => {
 
     useEffect(() => {
         fetch("https://mindhive-assessment.onrender.com/scrape")
+
             .then((response) => response.json())
             .then((data) => {
                 setOutlets(data.outlets);

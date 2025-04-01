@@ -22,6 +22,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://192.168.0.13:3000", "http://localhost:3000", "https://mindhive-assessment.onrender.com", "https://mindhive-assessment-2.onrender.com", ],  # Replace with ["http://192.168.0.16:3000"] in production
+
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
