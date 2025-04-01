@@ -20,7 +20,8 @@ const Chatbot = () => {
     if (!query) return;
 
     try {
-      const res = await fetch(`http://localhost:10000/chat/${encodeURIComponent(query)}`);
+      const res = await fetch(`http://mindhive-assessment.onrender.com/chat/${encodeURIComponent(query)}`);
+
       const data = await res.json();
       setResponse([...response, { query, answer: formatResponse(data.answer) }]);
       setQuery("");
