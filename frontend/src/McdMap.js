@@ -22,11 +22,14 @@ const McdMap = () => {
 
     useEffect(() => {
         fetch("https://mindhive-assessment.onrender.com/scrape")
-
             .then((response) => response.json())
             .then((data) => {
-                setOutlets(data.outlets);
-                findIntersections(data.outlets);
+                if (data && data.outlets) {  // ✅ Ensure data is defined before using it
+                    setOutlets(data.outlets);
+                    findIntersections(data.outlets);
+                } else {
+                    console.error("Error: data.outlets is undefined");
+                }
             })
             .catch((error) => console.error("Error fetching outlets:", error));
     }, []);
