@@ -1,6 +1,7 @@
 import logging
 import os
 import json
+import shutil
 import paramiko
 import time
 import pandas as pd
@@ -27,10 +28,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-options = webdriver.ChromeOptions()
-options.binary_location = "/usr/bin/google-chrome"  # Set correct Chrome path
-
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # Load environment variables
 load_dotenv()
@@ -97,13 +94,30 @@ def setup_ssh():
         return None
 
 def setup_driver():
-    """Initializes Selenium WebDriver."""
+    """Initializes Selenium WebDriver with headless Chromium for better compatibility."""
+    
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
-    service = Service(ChromeDriverManager().install())
-    return webdriver.Chrome(service=service, options=chrome_options)
+    chrome_options.add_argument("--disable-dev-shm-usage")  # ✅ Fixes memory issues on Render
+    
+    # ✅ Set binary location explicitly (Chromium fallback for Render)
+    chrome_path = shutil.which("google-chrome") or shutil.which("chromium") or "/usr/bin/chromium-browser"
+    if chrome_path:
+        chrome_options.binary_location = chrome_path
+    else:
+        raise FileNotFoundError("Chrome or Chromium not found in system paths!")
+
+    # ✅ Set up ChromeDriver
+    try:
+        service = Service(ChromeDriverManager().install())
+        return webdriver.Chrome(service=service, options=chrome_options)
+    except Exception as e:
+        print("Error initializing ChromeDriver:", e)
+        raise
+
+
 
 def get_page_source(url):
     """Fetches page source using Selenium."""
