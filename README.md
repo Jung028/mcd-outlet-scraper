@@ -2,17 +2,25 @@
 
 A React-based web application that visualizes McDonald's outlet locations on a map using Leaflet and OpenStreetMap. It also includes a chatbot that provides information about the outlets using the Gemini API.
 
+
 ## 📌 Features
+
+<img width="352" alt="Screenshot 2025-04-02 at 11 14 36 AM" src="https://github.com/user-attachments/assets/c4fb2e19-fc25-4c7b-87d1-5b9b72e57261" />
+
 
 ### 🗺️ **Map Visualization**
 - Displays McDonald's outlets on an interactive map.
 - Uses Leaflet.js with OpenStreetMap tiles.
 - Highlights outlets within a 5km radius of each other.
 
+<img width="352" alt="Screenshot 2025-04-02 at 11 15 56 AM" src="https://github.com/user-attachments/assets/9aa5fd23-5351-4cb9-bbe8-1a1f1cf2be7f" />
+
 ### 🤖 **Chatbot**
 - Users can ask about McDonald's outlets using natural language.
 - Integrates with the Gemini API to fetch responses.
 - Formats and displays responses in an interactive chat window.
+
+<img width="352" alt="Screenshot 2025-04-02 at 11 16 48 AM" src="https://github.com/user-attachments/assets/37f09662-5f75-42ae-8997-1167316464a5" />
 
 ### 🔌 **Backend API**
 - Developed using Python & FastAPI.
