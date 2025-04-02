@@ -28,7 +28,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
 # Load environment variables
 load_dotenv()
 
@@ -100,11 +99,11 @@ def setup_driver():
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
+
     chrome_options.add_argument("--disable-dev-shm-usage")  # ✅ Fixes memory issues on Render
-    
+   
     # Explicitly specify the Chrome binary location (try this if using Render.com)
     chrome_options.binary_location = "/usr/bin/google-chrome"  
-
 
     service = Service(ChromeDriverManager().install())
     return webdriver.Chrome(service=service, options=chrome_options)

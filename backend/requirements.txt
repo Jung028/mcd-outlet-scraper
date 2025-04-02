@@ -9,3 +9,4 @@ pandas
 requests
 google-generativeai
 uvicorn
+chromium-chromedriver
