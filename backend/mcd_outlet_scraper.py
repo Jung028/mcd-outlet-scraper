@@ -102,20 +102,12 @@ def setup_driver():
     chrome_options.add_argument("--no-sandbox")
     chrome_options.add_argument("--disable-dev-shm-usage")  # ✅ Fixes memory issues on Render
     
-    # ✅ Set binary location explicitly (Chromium fallback for Render)
-    chrome_path = shutil.which("google-chrome") or shutil.which("chromium") or "/usr/bin/chromium-browser"
-    if chrome_path:
-        chrome_options.binary_location = chrome_path
-    else:
-        raise FileNotFoundError("Chrome or Chromium not found in system paths!")
+    # Explicitly specify the Chrome binary location (try this if using Render.com)
+    chrome_options.binary_location = "/usr/bin/google-chrome"  
 
-    # ✅ Set up ChromeDriver
-    try:
-        service = Service(ChromeDriverManager().install())
-        return webdriver.Chrome(service=service, options=chrome_options)
-    except Exception as e:
-        print("Error initializing ChromeDriver:", e)
-        raise
+
+    service = Service(ChromeDriverManager().install())
+    return webdriver.Chrome(service=service, options=chrome_options)
 
 
 
