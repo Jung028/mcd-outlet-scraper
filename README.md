@@ -33,11 +33,11 @@ cd mindhive-assessment
 ## 2️⃣ Backend Setup (FastAPI)
 Ensure you have Python 3 installed.
 
-```bash
 cd backend
 pip install -r requirements.txt
-uvicorn main:app --reload
+uvicorn mcd_outlet_scraper:app --host 0.0.0.0 --port 8000 --reload
 ```
+
 The backend will run on [http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## 3️⃣ Frontend Setup (React)
