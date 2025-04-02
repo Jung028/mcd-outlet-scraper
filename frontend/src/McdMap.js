@@ -24,15 +24,17 @@ const McdMap = () => {
         fetch("https://mindhive-assessment.onrender.com/scrape")
             .then((response) => response.json())
             .then((data) => {
-                if (data && data.outlets) {  // ✅ Ensure data is defined before using it
+                if (data && data.outlets && Array.isArray(data.outlets)) {  // ✅ Extra checks
                     setOutlets(data.outlets);
                     findIntersections(data.outlets);
                 } else {
-                    console.error("Error: data.outlets is undefined");
+                    console.error("Error: data.outlets is undefined or not an array", data);
+                    setOutlets([]);  // 🛑 Prevents errors in rendering
                 }
             })
             .catch((error) => console.error("Error fetching outlets:", error));
     }, []);
+    
 
     const findIntersections = (outlets) => {
         const intersectingSet = new Set();
