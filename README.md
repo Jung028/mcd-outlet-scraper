@@ -58,6 +58,34 @@ npm start
 ```
 The frontend will run on [http://localhost:3000](http://localhost:3000)
 
+Make sure to create the .env file and add the links to your database, apis, etc.
+
+```
+# .env
+# AWS PostgreSQL
+SSH_HOST=""
+SSH_USER=""
+SSH_KEY_PATH=""
+
+
+DB_HOST=""
+DB_NAME=""
+DB_USER=""
+DB_PASSWORD=""
+DB_PORT=""
+
+
+# Google Maps
+REACT_APP_GOOGLE_MAPS_API_KEY=""
+
+# Gemini Chatbot LLM
+GEMINI_API_KEY =""
+
+```
+
+
+
+
 ## 🛠️ Technologies Used
 ### Frontend
 - **React.js** ⚛️
@@ -68,6 +96,8 @@ The frontend will run on [http://localhost:3000](http://localhost:3000)
 - **FastAPI (Python)** ⚡
 - **Gemini API** (for chatbot responses) 🤖
 - **Web scraping** (for outlet data) 🔍
+
+  
 
 ## 📖 Project Structure
 ```bash
