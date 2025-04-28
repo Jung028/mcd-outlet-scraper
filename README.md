@@ -33,8 +33,8 @@ A React-based web application that visualizes McDonald's outlet locations on a m
 
 ### 1️⃣ **Clone the Repository**
 ```bash
-git clone https://github.com/Jung028/mindhive-assessment.git
-cd mindhive-assessment
+git clone https://github.com/Jung028/mcd-outlet-scraper.git
+cd mcd-outlet-scraper
 
 # 🛠️ Project Setup
 
@@ -101,7 +101,7 @@ GEMINI_API_KEY =""
 
 ## 📖 Project Structure
 ```bash
-mindhive-assessment/
+mcd-outlet-scraper/
 │── backend/                 # FastAPI backend
 │   ├── main.py              # API entry point
 │   ├── mcd_outlets_scraper.py # Scraper & chatbot logic
